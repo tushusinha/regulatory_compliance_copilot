@@ -2,6 +2,7 @@ import streamlit as st
 import json
 import os
 import subprocess
+import re
 from datetime import datetime
 
 # --- File paths ---
@@ -16,7 +17,7 @@ st.set_page_config(
 
 st.title("⚖️ Regulatory Compliance Copilot Dashboard")
 st.markdown(
-    "An AI-driven assistant that analyzes new regulatory updates, maps them to internal policies and controls, and recommends actionable next steps."
+    "An AI-driven assistant that analyses new regulatory updates, maps them to internal policies and controls, and recommends actionable next steps."
 )
 
 # --- Refresh button + status bar ---
@@ -60,6 +61,32 @@ if not os.path.exists(OUTPUT_FILE):
 with open(OUTPUT_FILE, "r", encoding="utf-8") as f:
     results = json.load(f)
 
+# --- Helper: Clean up Markdown artifacts ---
+def clean_markdown(text: str) -> str:
+    if not text:
+        return ""
+    # Remove markdown headers (###, ####, etc.)
+    text = re.sub(r"#+\s*", "", text)
+    # Remove excessive bold markers
+    text = text.replace("**", "")
+    # Normalise bullet points
+    text = re.sub(r"^\s*-\s*", "• ", text, flags=re.MULTILINE)
+    # Fix numbered headings like '1.' or '2.'
+    text = re.sub(r"(?m)^\s*(\d+)\.\s*", r"**\1.** ", text)
+    # Compact extra blank lines
+    text = re.sub(r"\n{3,}", "\n\n", text)
+    return text.strip()
+
+# --- Helper: Color-code priority levels ---
+def highlight_priorities(text: str) -> str:
+    """Wrap priority keywords in colored HTML spans."""
+    if not text:
+        return text
+    text = re.sub(r"\bHigh\b", r"<span style='color:#e74c3c; font-weight:bold;'>High 🔴</span>", text)
+    text = re.sub(r"\bMedium\b", r"<span style='color:#f39c12; font-weight:bold;'>Medium 🟠</span>", text)
+    text = re.sub(r"\bLow\b", r"<span style='color:#27ae60; font-weight:bold;'>Low 🟢</span>", text)
+    return text
+
 st.subheader("📊 Compliance Analysis Results")
 
 # --- Sidebar ---
@@ -71,7 +98,7 @@ if tabs == "Regulations":
     st.header("📜 New Regulatory Updates")
     for doc in results.get("regulatory_updates", []):
         with st.expander(doc.get("title", "Untitled Regulation"), expanded=False):
-            st.write(doc.get("content", "No content available"))
+            st.write(clean_markdown(doc.get("content", "No content available")))
 
 elif tabs == "Mappings":
     st.header("🗺️ Regulation → Policies & Controls Mapping")
@@ -82,7 +109,7 @@ elif tabs == "Mappings":
                 st.write("_No mappings found._")
             else:
                 for r in related:
-                    st.markdown(f"- **{r['text']}**")
+                    st.markdown(f"• {clean_markdown(r['text'])}")
                     if r.get("metadata"):
                         st.caption(f"Source: {r['metadata'].get('type', 'N/A')}")
 
@@ -90,13 +117,16 @@ elif tabs == "Impact Analysis":
     st.header("🔍 Impact Summaries")
     for impact in results.get("impacts", []):
         with st.expander(impact.get("regulation_title", "Untitled Regulation"), expanded=False):
-            st.text_area("Impact Analysis", impact.get("impact_analysis", ""), height=250)
+            st.text_area("Impact Analysis", clean_markdown(impact.get("impact_analysis", "")), height=250)
 
 elif tabs == "Recommended Actions":
     st.header("🧭 Compliance Recommendations")
     for action in results.get("actions", []):
         with st.expander(action.get("regulation_title", "Untitled Regulation"), expanded=False):
-            st.text_area("Action Plan", action.get("recommended_actions", ""), height=250)
+            clean_text = clean_markdown(action.get("recommended_actions", ""))
+            highlighted = highlight_priorities(clean_text)
+            # Render as HTML for colored spans
+            st.markdown(highlighted, unsafe_allow_html=True)
 
 # --- Footer ---
 st.markdown("---")
