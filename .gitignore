@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# Virtual env
+venv/
+.env
+.env.*
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# Logs, outputs, caches, and dataset/vector store
+logs/
+src/data/output/
+src/data/vector_store/
+data/embeddings/
+*.sqlite
+*.db
+*.parquet
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Python packaging
+pip-wheel-metadata/

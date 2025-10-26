@@ -1,0 +1,7 @@
+Policy: Anti-Money Laundering (AML) Framework
+
+The bank implements a risk-based AML program to prevent, detect, and report
+money laundering and terrorist financing activities.
+
+This includes KYC verification, transaction monitoring, and suspicious activity
+reporting (SAR) aligned with the FCA Handbook SYSC 6.3.

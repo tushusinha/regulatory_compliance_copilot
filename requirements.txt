@@ -1,0 +1,46 @@
+# Core LLM & Agentic Frameworks
+langchain>=0.2.14
+langchain-core>=0.2.23
+langchain-community>=0.2.11
+langchain-openai>=0.1.8
+autogen-agentchat>=0.2.1
+crewai>=0.32.0
+
+# Vector Database & Embeddings
+chromadb>=0.5.3
+faiss-cpu>=1.8.0
+sentence-transformers>=2.6.1
+
+# Data Handling & Document Processing
+pandas>=2.2.2
+numpy>=1.26.4
+pypdf>=4.2.0
+python-docx>=1.1.0
+beautifulsoup4>=4.12.3
+requests>=2.32.3
+tiktoken>=0.7.0
+
+# Explainability & Visualization
+streamlit>=1.37.0
+plotly>=5.23.0
+matplotlib>=3.9.0
+
+# Configuration & Utilities
+python-dotenv>=1.0.1
+pyyaml>=6.0.2
+loguru>=0.7.2
+
+# Testing
+pytest>=8.3.2
+
+# Optional (for advanced orchestration or scheduling)
+apscheduler>=3.10.4
+fastapi>=0.111.0
+uvicorn>=0.30.0
+
+# Security & Data Validation
+pydantic>=2.8.2
+cryptography>=42.0.8
+
+# UI
+streamlit==1.39.0

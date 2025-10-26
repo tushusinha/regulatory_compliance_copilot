@@ -1,0 +1,18 @@
+[
+  {
+    "control_id": "C201",
+    "name": "Customer Communication Review",
+    "description": "Quarterly review of all product communication templates for clarity, fairness, and adherence to Consumer Duty standards.",
+    "owner": "Retail Compliance",
+    "frequency": "Quarterly",
+    "last_reviewed": "2024-08-22"
+  },
+  {
+    "control_id": "C202",
+    "name": "Lending Decision Fairness Validation",
+    "description": "Periodic audit of lending decision outcomes to identify potential bias or unfair treatment of vulnerable customers.",
+    "owner": "Credit Risk Oversight",
+    "frequency": "Quarterly",
+    "last_reviewed": "2024-09-10"
+  }
+]

@@ -1,0 +1,7 @@
+Policy: Operational Resilience and Business Continuity
+
+The bank must maintain the ability to deliver critical operations through
+disruptions, including cyber incidents and third-party outages.
+
+This policy outlines risk assessments, impact tolerances, and recovery
+time objectives (RTOs), in compliance with PRA SS1/21.

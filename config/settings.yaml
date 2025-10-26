@@ -1,0 +1,14 @@
+models:
+  llm_model: "gpt-4o"
+  embedding_model: "sentence-transformers/all-MiniLM-L6-v2"
+
+vector_db:
+  type: "chroma"
+  path: "./data/embeddings"
+
+dashboard:
+  port: 8501
+  auto_reload: true
+
+logging:
+  level: "INFO"

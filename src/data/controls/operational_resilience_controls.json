@@ -1,0 +1,18 @@
+[
+  {
+    "control_id": "C101",
+    "name": "Critical Business Services Continuity Testing",
+    "description": "Annual testing of business continuity plans for all critical business services to ensure recovery within tolerance levels.",
+    "owner": "Operational Resilience",
+    "frequency": "Annually",
+    "last_reviewed": "2024-07-30"
+  },
+  {
+    "control_id": "C102",
+    "name": "Third-Party Dependency Monitoring",
+    "description": "Quarterly assessment of critical third-party vendors to validate operational resilience and incident response capability.",
+    "owner": "Vendor Risk Management",
+    "frequency": "Quarterly",
+    "last_reviewed": "2024-06-12"
+  }
+]

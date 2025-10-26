@@ -1,0 +1,18 @@
+[
+  {
+    "control_id": "C001",
+    "name": "Customer KYC Verification",
+    "description": "All new customers must be verified through the KYC process prior to account activation. Includes PEP and sanctions screening.",
+    "owner": "Financial Crime Compliance",
+    "frequency": "Per Account",
+    "last_reviewed": "2024-09-15"
+  },
+  {
+    "control_id": "C002",
+    "name": "Transaction Monitoring Controls",
+    "description": "Automated transaction monitoring system runs daily to identify suspicious transactions and escalate to MLRO for review.",
+    "owner": "AML Operations",
+    "frequency": "Daily",
+    "last_reviewed": "2024-08-01"
+  }
+]
